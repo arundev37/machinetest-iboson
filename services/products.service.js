@@ -23,3 +23,9 @@ module.exports.updateProduct = async (data) => {
     } })
     return {message: 'Success'}
 }
+
+module.exports.listProducts = async (data) => {
+    const products = await Product.find();
+
+    return {message: 'Success', products}
+}
