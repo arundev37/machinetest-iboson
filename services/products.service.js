@@ -6,8 +6,8 @@ module.exports.createProduct = async (data) => {
         throw new Error('Product already exists')
     }
     const newProduct = new Product(data);
-    await newProduct.save();
-    return 'Success'
+    const productData = await newProduct.save();
+    return {message: 'Success', id: productData._id}
 }
 
 module.exports.updateProduct = async (data) => {
@@ -21,5 +21,5 @@ module.exports.updateProduct = async (data) => {
         status: data.status, 
         description: data.description 
     } })
-    return 'Success'
+    return {message: 'Success'}
 }
